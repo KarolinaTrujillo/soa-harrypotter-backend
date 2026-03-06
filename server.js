@@ -6,6 +6,7 @@ const cors = require("cors")
 
 const app = express()
 
+
 app.use(cors({
   origin: process.env.FRONTEND_URL,
   credentials: true
@@ -16,7 +17,6 @@ app.get("/characters", async (req, res) => {
     const response = await axios.get(`${process.env.HARRY_POTTER_API}/characters`)
     res.json(response.data)
   } catch (error) {
-    console.error("Error:", error.message)
     res.status(500).json({ message: "Error consuming Harry Potter API" })
   }
 })
